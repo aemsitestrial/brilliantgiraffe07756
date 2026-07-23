@@ -256,8 +256,9 @@ async function loadCSS(href) {
  */
 async function loadScript(src, attrs) {
   return new Promise((resolve, reject) => {
-    if (!document.querySelector(`head > script[src="${src}"]`)) {
-      const script = document.createElement('script');
+    let script = document.querySelector(`head > script[src="${src}"]`);
+    if (!script) {
+      script = document.createElement('script');
       script.src = src;
       if (attrs) {
         // eslint-disable-next-line no-restricted-syntax, guard-for-in
@@ -265,11 +266,14 @@ async function loadScript(src, attrs) {
           script.setAttribute(attr, attrs[attr]);
         }
       }
-      script.onload = resolve;
+      script.onload = () => { script.dataset.loaded = 'true'; resolve(); };
       script.onerror = reject;
       document.head.append(script);
-    } else {
+    } else if (script.dataset.loaded) {
       resolve();
+    } else {
+      script.addEventListener('load', resolve);
+      script.addEventListener('error', reject);
     }
   });
 }

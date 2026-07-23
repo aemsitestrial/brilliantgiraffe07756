@@ -10,6 +10,7 @@ import {
 
 import {
   loadSections,
+  loadScript,
 } from '../../scripts/aem.js';
 
 /**
@@ -24,7 +25,14 @@ export async function loadFragment(path) {
     const resp = await fetch(`${path}.plain.html`);
     if (resp.ok) {
       const main = document.createElement('main');
-      main.innerHTML = await resp.text();
+      try {
+        await loadScript(`${window.hlx.codeBasePath}/scripts/dompurify.min.js`);
+        main.innerHTML = window.DOMPurify.sanitize(await resp.text(), { USE_PROFILES: { html: true } });
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.warn('DOMPurify failed to load; fragment skipped for security.', e);
+        return null;
+      }
 
       // reset base path for media to fragment base
       const resetAttributeBase = (tag, attr) => {
