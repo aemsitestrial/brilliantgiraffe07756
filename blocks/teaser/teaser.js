@@ -8,7 +8,7 @@
  */
 function getOptions(block) {
   // Get the block's classes, excluding 'block' and 'teaser'.
-  return [...block.classList].filter((c) => !["block", "teaser"].includes(c));
+  return [...block.classList].filter((c) => !['block', 'teaser'].includes(c));
 }
 
 /**
@@ -19,12 +19,12 @@ function getOptions(block) {
  * @param {HTMLElement} block represents the block's DOM tree
  */
 function addEventListeners(block) {
-  block.querySelector(".button").addEventListener("mouseover", () => {
-    block.querySelector(".image").classList.add("zoom");
+  block.querySelector('.button').addEventListener('mouseover', () => {
+    block.querySelector('.image').classList.add('zoom');
   });
 
-  block.querySelector(".button").addEventListener("mouseout", () => {
-    block.querySelector(".image").classList.remove("zoom");
+  block.querySelector('.button').addEventListener('mouseout', () => {
+    block.querySelector('.image').classList.remove('zoom');
   });
 }
 
@@ -37,30 +37,30 @@ function addEventListeners(block) {
  */
 export default function decorate(block) {
   /* Common treatments for all options */
-  block.querySelector(":scope > div:last-child").classList.add("content");
-  block.querySelector("h1,h2,h3,h4,h5,h6").classList.add("title");
-  block.querySelector("img").classList.add("image");
+  block.querySelector(':scope > div:last-child').classList.add('content');
+  block.querySelector('h1,h2,h3,h4,h5,h6').classList.add('title');
+  block.querySelector('img').classList.add('image');
 
   // Process each paragraph and mark it as text or terms-and-conditions
-  block.querySelectorAll("p").forEach((p) => {
+  block.querySelectorAll('p').forEach((p) => {
     const innerHTML = p.innerHTML?.trim();
-    if (innerHTML?.startsWith("Terms and conditions:")) {
-      p.classList.add("terms-and-conditions");
+    if (innerHTML?.startsWith('Terms and conditions:')) {
+      p.classList.add('terms-and-conditions');
     }
   });
 
   /* Conditional treatments for specific options */
   if (
-    getOptions(block).includes("side-by-side-right") ||
-    getOptions(block).includes("side-by-side-left")
+    getOptions(block).includes('side-by-side-right')
+    || getOptions(block).includes('side-by-side-left')
   ) {
     /* For side-by-side teasers, add the image-wrapper to a higher-level div to support CSS */
     block
-      .querySelector(":scope > div:first-child")
-      .classList.add("image-wrapper");
+      .querySelector(':scope > div:first-child')
+      .classList.add('image-wrapper');
   } else if (!getOptions(block)) {
     /* For the default option, add the image-wrapper to the picture element to support CSS */
-    block.querySelector("picture").classList.add("image-wrapper");
+    block.querySelector('picture').classList.add('image-wrapper');
   }
 
   addEventListeners(block);
