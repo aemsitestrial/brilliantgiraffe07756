@@ -8,12 +8,12 @@
  * @param {HTMLElement} block represents the block's' DOM tree
  */
 function addEventListeners(block) {
-  block.querySelector('.button').addEventListener('mouseover', () => {
-    block.querySelector('.image').classList.add('zoom');
+  block.querySelector(".button").addEventListener("mouseover", () => {
+    block.querySelector(".image").classList.add("zoom");
   });
 
-  block.querySelector('.button').addEventListener('mouseout', () => {
-    block.querySelector('.image').classList.remove('zoom');
+  block.querySelector(".button").addEventListener("mouseout", () => {
+    block.querySelector(".image").classList.remove("zoom");
   });
 }
 
@@ -31,25 +31,25 @@ export default function decorate(block) {
   // If needed we could also add ARIA roles and attributes, or add/remove/move DOM elements.
 
   // Add a class to the first picture element to target it with CSS
-  block.querySelector('picture').classList.add('image-wrapper');
+  block.querySelector("picture").classList.add("image-wrapper");
 
   // Use previously applied classes to target new elements
-  block.querySelector('.image-wrapper img').classList.add('image');
+  block.querySelector(".image-wrapper img").classList.add("image");
 
   // Mark the second/last div as the content area (white, bottom aligned box w/ text and cta)
-  block.querySelector(':scope > div:last-child').classList.add('content');
+  block.querySelector(":scope > div:last-child").classList.add("content");
 
   // Mark the first H1-H6 as a title
-  block.querySelector('h1,h2,h3,h4,h5,h6').classList.add('title');
+  block.querySelector("h1,h2,h3,h4,h5,h6").classList.add("title");
 
   // Process each paragraph and mark it as text or terms-and-conditions
-  block.querySelectorAll('p').forEach((p) => {
+  block.querySelectorAll("p").forEach((p) => {
     const innerHTML = p.innerHTML?.trim();
 
     // If the paragraph starts with Terms and conditions: then style it as such
-    if (innerHTML?.startsWith('Terms and conditions:')) {
+    if (innerHTML?.startsWith("Terms and conditions:")) {
       /* If a paragraph starts with '*', add a special CSS class. */
-      p.classList.add('terms-and-conditions');
+      p.classList.add("terms-and-conditions");
     }
   });
 
