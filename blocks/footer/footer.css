@@ -1,67 +1,104 @@
-/* /blocks/footer/footer.css */
+/* Footer block — Xcel Energy.
+   Styling extracted from https://tx.my.xcelenergy.com/s/: dark footer with
+   5 link columns, a social/legal row, and a brand/copyright row. */
 
 footer {
-    background-color: var(--light-color);
-
-    .block.footer {
-        border-top: solid 1px var(--dark-color);
-        font-size: var(--body-font-size-s);
-
-        a {
-            all: unset;
-
-            &:hover {
-                text-decoration: underline;
-                cursor: pointer;
-            }
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border: solid 1px white;
-        }
-
-        p {
-            margin: 0;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-
-            li {
-                padding-left: 0.5rem;
-            }
-        }
-
-        & > div {
-            margin: auto;
-            max-width: 1200px;
-        }
-
-        .columns > div {
-            gap: 5rem;
-            align-items: flex-start;
-
-            & > div:first-child {
-                flex: 2;
-            }
-        }
-
-        .default-content-wrapper {
-            padding-top: 2rem;
-            margin-top: 2rem;
-            font-style: italic;
-            text-align: right;
-        }
-    }
+  background-color: var(--dark-color, #00475b);
+  color: #fff;
+  font-family: var(--body-font-family, "Roboto", sans-serif);
 }
 
+footer .footer > div {
+  max-width: 1216px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+footer .footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer .footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Link columns ---- */
+footer .footer .footer-links {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px 32px;
+  padding-top: 40px;
+  padding-bottom: 24px;
+}
+
+footer .footer .footer-links h3 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+footer .footer .footer-links ul {
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer .footer-links li {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+/* ---- Social + legal row ---- */
+footer .footer .footer-social-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  align-items: center;
+  padding-top: 24px;
+  padding-bottom: 16px;
+  border-top: 1px solid rgb(255 255 255 / 25%);
+}
+
+footer .footer .footer-social-legal ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer .footer-social-legal li {
+  font-size: 14px;
+}
+
+/* ---- Brand + copyright row ---- */
+footer .footer .footer-brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+  padding-bottom: 32px;
+  border-top: 1px solid rgb(255 255 255 / 25%);
+}
+
+footer .footer .footer-brand img {
+  width: 130px;
+  height: auto;
+}
+
+footer .footer .footer-brand p {
+  margin: 0;
+  font-size: 13px;
+  color: rgb(255 255 255 / 80%);
+}
+
+/* ---- Desktop: 5-column layout ---- */
 @media (width >= 900px) {
-    footer .block.footer > div {
-        padding: 40px 32px 24px;
-    }
+  footer .footer .footer-links {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
