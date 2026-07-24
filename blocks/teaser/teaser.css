@@ -39,13 +39,18 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        background: var(--background-color);
+        background: #fff;
         padding: 1.5rem 1.5rem 1rem;
         width: 80vw;
         max-width: 1200px;
+        border-radius: 20px 20px 0 0;
+        box-shadow: rgb(36 37 38 / 20%) 0 8px 32px 0;
+        font-family: Roboto, sans-serif;
 
         .title {
-            font-size: var(--heading-font-size-xl);
+            font-size: 40px;
+            font-weight: 700;
+            color: #333;
             margin: 0;
         }
 
@@ -54,17 +59,18 @@
         }
 
         p {
-            font-size: var(--body-font-size-s);
+            font-size: 16px;
+            color: #333;
             margin-bottom: 1rem;
             animation: teaser-fade-in 0.6s;
         }
 
         p.terms-and-conditions {
-            font-size: var(--body-font-size-xs);
-            color: var(--secondary-color);
+            font-size: 12.8px;
+            color: #666;
             padding: 0.5rem 1rem;
             font-style: italic;
-            border: solid var(--light-color);
+            border: solid #d8d8d8;
             border-width: 0 0 0 10px;
         }
 
@@ -79,11 +85,12 @@
             padding: 0;
 
             .button {
-                background-color: var(--primary-color);
+                background-color: #da1020;
                 border-radius: 0;
-                color: var(--dark-color);
-                font-size: var(--body-font-size-xs);
+                color: #fff;
+                font-size: 12.8px;
                 font-weight: bold;
+                font-family: Roboto, sans-serif;
                 padding: 1em 2.5em;
                 margin: 0;
                 text-transform: uppercase;
@@ -130,16 +137,17 @@
         .content {
             all: initial;
             flex: 1;
-            background-color: var(--light-color);
+            background-color: #f5eee8;
             padding: 3.5em 2em 2em;
-            font-size: var(--body-font-size-s);
-            font-family: var(--body-font-family);
+            font-size: 16px;
+            font-family: Roboto, sans-serif;
+            color: #333;
             text-align: justify;
             text-justify: auto;
             hyphens: auto;
 
             p.terms-and-conditions {
-                border: solid var(--text-color);
+                border: solid #333;
                 border-width: 0;
                 padding-left: 0;
                 text-align: left;
@@ -185,16 +193,17 @@
         .content {
             all: initial;
             flex: 1;
-            background-color: var(--light-color);
+            background-color: #f5eee8;
             padding: 3.5em 2em 2em;
-            font-size: var(--body-font-size-s);
-            font-family: var(--body-font-family);
+            font-size: 16px;
+            font-family: Roboto, sans-serif;
+            color: #333;
             text-align: justify;
             text-justify: auto;
             hyphens: auto;
 
             p.terms-and-conditions {
-                border: solid var(--text-color);
+                border: solid #333;
                 border-width: 0;
                 padding-left: 0;
                 text-align: left;

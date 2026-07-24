@@ -16,7 +16,9 @@
       "cards",
       "columns",
       "fragment",
-      "teaser"
+      "teaser",
+      "hero-blade",
+      "cards-feature"
     ]
   },
   {
