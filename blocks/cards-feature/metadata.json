@@ -1,0 +1,37 @@
+{
+  "variantName": "cards-feature",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-24T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://tx.my.xcelenergy.com/s/",
+    "originPage": "Xcel Energy customer portal home",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "feature",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "grid of items, each image/icon + heading + description + CTA link",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "featured-content grids (2-4 items) with image or icon + heading + description + CTA",
+      "audience selectors (residential/business), account resources, story highlights"
+    ],
+    "notSuitableFor": [
+      "single feature or promo (use columns)",
+      "tabular data (use table)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/s/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-24T00:00:00.000Z"
+  }
+}

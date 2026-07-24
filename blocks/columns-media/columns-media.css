@@ -1,0 +1,153 @@
+/* columns-media -- side-by-side media (image/video) + text feature rows.
+ * Design migrated from https://tx.my.xcelenergy.com/s/ (xeg-two-column blade).
+ * Values from source computed styles at 1440px viewport.
+ *
+ * Content model: cell 1 = text (h2 + p + CTA), cell 2 = media (picture or link).
+ * Source alternates image-left / text-left; here image rows render image-left,
+ * video/link rows render text-left (natural DOM order). Stacks on mobile.
+ */
+
+/* ---- mobile-first: stacked ---- */
+.columns-media > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-media > div > div {
+  order: 1;
+}
+
+/* media picture-only cell decorated by columns-media.js */
+.columns-media > div > .columns-media-img-col {
+  order: 0;   /* image above text on mobile */
+}
+
+.columns-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* YouTube embed (video feature rows) -- responsive 16:9 */
+.columns-media .columns-media-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.columns-media .columns-media-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* headings: source uses pure black (not brand teal) on white feature rows */
+.columns-media h2 {
+  margin: 0 0 20px;
+  color: rgb(0 0 0);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.18;
+}
+
+/* signature red "dashes" accent above the heading (source: three short red bars).
+ * Not shown on the maroon contact strip. */
+main .section:not(.brand-maroon) .columns-media h2::before {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 5px;
+  margin-bottom: 20px;
+  background-image: linear-gradient(
+    to right,
+    rgb(217 25 27) 0 10px,
+    transparent 10px 17px,
+    rgb(217 25 27) 17px 27px,
+    transparent 27px 34px,
+    rgb(217 25 27) 34px 44px
+  );
+}
+
+.columns-media p {
+  margin: 0 0 20px;
+  color: rgb(0 0 0);
+  font-size: 20px;
+  line-height: 1.18;
+}
+
+.columns-media p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- CTA (feature rows): source renders an uppercase bold underlined
+ * text-link with a red arrow, NOT a filled button. EDS auto-decorates the
+ * standalone <p><a> into a.button; override it back to the text-link look.
+ * Scoped to NON-maroon sections so the contact strip keeps its filled button
+ * (handled by styles.css .section.brand-maroon rules). ---- */
+main .section:not(.brand-maroon) .columns-media a.button:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: rgb(0 0 0);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+main .section:not(.brand-maroon) .columns-media a.button:any-link::after {
+  content: "\2192"; /* red right arrow */
+  color: rgb(217 25 27);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+main .section:not(.brand-maroon) .columns-media a.button:hover {
+  background: none;
+  color: rgb(0 0 0);
+  text-decoration: underline;
+}
+
+/* ---- desktop: side-by-side 50/50 ---- */
+@media (width >= 900px) {
+  .columns-media > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .columns-media > div > div {
+    flex: 1;
+    order: unset;
+  }
+
+  /* image-media rows: image on the LEFT (source pattern) */
+  .columns-media > div > .columns-media-img-col {
+    order: 0;
+  }
+
+  .columns-media > div > div:not(.columns-media-img-col) {
+    order: 1;
+  }
+
+  .columns-media h2 {
+    margin-bottom: 32px;
+    font-size: 48px;
+  }
+
+  .columns-media p {
+    margin-bottom: 32px;
+    font-size: 24px;
+  }
+}

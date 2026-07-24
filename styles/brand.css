@@ -1,0 +1,28 @@
+/* Xcel Energy brand tokens — extracted from https://tx.my.xcelenergy.com/s/ */
+:root {
+  /* fonts */
+  --heading-font-family: "Roboto", roboto-fallback, sans-serif;
+  --body-font-family: "Roboto", roboto-fallback, sans-serif;
+
+  /* colors */
+  --background-color: rgb(255 255 255);
+  --text-color: rgb(51 51 51);
+  --link-color: rgb(9 28 149);
+  --link-hover-color: rgb(19 95 144);
+  --light-color: rgb(242 242 242);
+  --dark-color: rgb(0 71 91);
+  --brand-maroon: rgb(101 37 60);
+
+  /* spacing */
+  --section-padding: 64px;
+  --content-max-width: 1200px;
+  --nav-height: 64px;
+
+  /* heading sizes (desktop) */
+  --heading-size-xxl: 56px;
+  --heading-size-xl: 48px;
+  --heading-size-l: 32px;
+  --heading-size-m: 24px;
+  --heading-size-s: 20px;
+  --heading-size-xs: 18px;
+}

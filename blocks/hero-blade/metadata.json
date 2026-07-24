@@ -1,0 +1,38 @@
+{
+  "variantName": "hero-blade",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-07-24T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://tx.my.xcelenergy.com/s/",
+    "originPage": "Xcel Energy customer portal home",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background-image + heading + subheading + optional CTAs",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "full-width banner / blade sections with a background photo",
+      "top-of-page and closing hero banners",
+      "branded action banners with headline over imagery"
+    ],
+    "notSuitableFor": [
+      "text-only intros without a background image",
+      "multi-item grids"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/s/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-24T00:00:00.000Z"
+  }
+}

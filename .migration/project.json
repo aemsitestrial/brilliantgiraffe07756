@@ -1,0 +1,14 @@
+{
+  "type": "xwalk",
+  "sites": {
+    "brilliantgiraffe07756": {
+      "previewOrg": "aemsitestrial",
+      "previewSite": "brilliantgiraffe07756",
+      "aemSitePath": "/content/2026/30/brilliantgiraffe07756",
+      "aemAssetsFolderPath": "/content/dam/2026/30/brilliantgiraffe07756",
+      "aemSiteName": "brilliantgiraffe07756",
+      "aemSiteTitle": "brilliantgiraffe07756",
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

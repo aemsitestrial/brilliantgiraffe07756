@@ -1,0 +1,38 @@
+{
+  "variantName": "columns-media",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-07-24T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://tx.my.xcelenergy.com/s/",
+    "originPage": "Xcel Energy customer portal home",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "feature",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "media (image or embedded video) + text + CTA, side-by-side",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "two-column promo blocks pairing an image or video with text and a CTA",
+      "alternating media/text feature rows on white sections",
+      "branded horizontal strips (heading + text + button)"
+    ],
+    "notSuitableFor": [
+      "grids of many repeating items (use cards)",
+      "full-width background banners (use hero)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/s/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-24T00:00:00.000Z"
+  }
+}

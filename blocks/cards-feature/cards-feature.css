@@ -1,0 +1,133 @@
+/* Block: cards-feature — Xcel Energy "Featured Content" card grid.
+ * Values extracted from computed styles on https://tx.my.xcelenergy.com/s/
+ * Vertical card: image on top, red-accented h3, description, uppercase CTA with arrow.
+ * Renders 2, 3 and 4 item grids responsibly (wraps on narrow viewports). */
+
+.cards-feature {
+  --cards-feature-accent: rgb(218 16 32); /* Xcel red accent bar / CTA arrow */
+  --cards-feature-shadow: rgb(36 37 38 / 20%) 0 8px 32px 0;
+  --cards-feature-gap: 32px;
+}
+
+/* Grid container (block JS converts rows -> ul, cells -> li) */
+.cards-feature > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cards-feature-gap);
+}
+
+/* Card */
+.cards-feature > ul > li {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  text-align: left;
+}
+
+/* Image on top — soft drop shadow, no border/radius, cropped to a consistent ratio */
+.cards-feature .cards-feature-card-image {
+  line-height: 0;
+  box-shadow: var(--cards-feature-shadow);
+}
+
+.cards-feature .cards-feature-card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 335 / 264; /* ~1.27, measured from source */
+  object-fit: cover;
+}
+
+/* Text area below the image */
+.cards-feature .cards-feature-card-body {
+  margin-top: var(--cards-feature-gap);
+}
+
+/* Heading with red left accent bar */
+.cards-feature .cards-feature-card-body h3 {
+  margin: 0 0 var(--cards-feature-gap);
+  padding-left: 16px;
+  border-left: 4px solid var(--cards-feature-accent);
+  color: rgb(0 0 0);
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.18;
+  text-transform: none;
+}
+
+/* Description — slightly inset to align with heading text */
+.cards-feature .cards-feature-card-body p {
+  margin: 0 0 var(--cards-feature-gap);
+  padding-left: 20px;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* CTA link — uppercase, bold, underlined, with a red arrow.
+ * Override EDS button auto-decoration and global a.button styling. */
+.cards-feature .cards-feature-card-body p:last-child {
+  margin-bottom: 0;
+  padding-left: 20px;
+}
+
+.cards-feature .cards-feature-card-body a,
+main .cards-feature .cards-feature-card-body a.button:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0 4px 4px 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: rgb(0 0 0);
+  font-family: var(--body-font-family);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.18;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  white-space: normal;
+}
+
+.cards-feature .cards-feature-card-body a::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 14px;
+  background-color: var(--cards-feature-accent);
+  mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11h13.2l-4.6-4.6L14 5l7 7-7 7-1.4-1.4 4.6-4.6H4z"/></svg>') no-repeat center / contain;
+}
+
+.cards-feature .cards-feature-card-body a:hover,
+main .cards-feature .cards-feature-card-body a.button:any-link:hover {
+  background-color: transparent;
+  color: var(--cards-feature-accent);
+  text-decoration: underline;
+}
+
+/* Multi-column layout on wider viewports.
+ * auto-fit keeps 2/3/4 item grids balanced and wraps gracefully. */
+@media (width >= 700px) {
+  .cards-feature > ul {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--cards-feature-gap);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-feature {
+    --cards-feature-gap: 32px;
+  }
+
+  /* 3 and 4 item grids expand to more columns; 2 item stays 2-up */
+  .cards-feature > ul {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
