@@ -1,19 +1,27 @@
+.cards {
+  font-family: Roboto, sans-serif;
+}
+
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  grid-gap: 24px;
+  grid-gap: 32px;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  border: 1px solid #d8d8d8;
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: rgb(36 37 38 / 20%) 0 8px 32px 0;
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  margin: 20px;
+  color: #333;
 }
 
 .cards .cards-card-image {
