@@ -4,6 +4,16 @@ import { loadFragment } from '../fragment/fragment.js';
 // media query match that indicates desktop width
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
+// Red utility-bar icons keyed by link text, plus the Sign In person icon.
+const UTILITY_ICONS = {
+  'pay bill': '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1a4 4 0 0 0-4 4h1.5A2.5 2.5 0 0 1 12 2.5 2.5 2.5 0 0 1 14.5 5c0 1-.6 1.6-1.6 2.3-1 .8-2.1 1.7-2.1 3.4V12h1.5v-1.3c0-1 .6-1.5 1.6-2.3 1-.8 2.1-1.7 2.1-3.4A4 4 0 0 0 12 1Zm-.8 20v1.5h1.6V21a4 4 0 0 0 0-7.8V21ZM11 15.2a2.5 2.5 0 0 0 0 4.4v-4.4Z"/><path fill="currentColor" d="M11.2 13.2v1.9h1.6v-1.9z"/></svg>',
+  'start/stop service': '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>',
+  outages: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 1 21h22L12 2Zm0 4 8.5 14.5h-17L12 6Zm-1 5v4h2v-4h-2Zm0 5v2h2v-2h-2Z"/></svg>',
+  'customer service': '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-9 9v5a3 3 0 0 0 3 3h1v-8H5v-0a7 7 0 0 1 14 0v8h-4v2h4a3 3 0 0 0 3-3v-7a9 9 0 0 0-9-9Z"/></svg>',
+};
+
+const SIGN_IN_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-5 0-9 2.5-9 5.5V22h18v-2.5c0-3-4-5.5-9-5.5Z"/></svg>';
+
 function closeAllPanels(navSections) {
   navSections.querySelectorAll('.nav-drop[aria-expanded="true"]').forEach((d) => {
     d.setAttribute('aria-expanded', 'false');
@@ -139,13 +149,35 @@ export default async function decorate(block) {
       const logoImg = navBrand.querySelector('img');
       if (logoImg) logoImg.setAttribute('loading', 'eager');
     }
-    // the utility links list keeps its own class for styling
+    // the utility links list keeps its own class for styling; prepend red icons
     const utilList = navBrand.querySelector('ul');
-    if (utilList) utilList.classList.add('nav-utility');
+    if (utilList) {
+      utilList.classList.add('nav-utility');
+      utilList.querySelectorAll('a').forEach((a) => {
+        const key = a.textContent.trim().toLowerCase();
+        if (UTILITY_ICONS[key]) {
+          const icon = document.createElement('span');
+          icon.className = 'nav-utility-icon';
+          icon.innerHTML = UTILITY_ICONS[key];
+          a.prepend(icon);
+        }
+      });
+    }
   }
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) decorateSections(navSections);
+
+  // Tools: render Sign In as a plain text link with a person icon (matches source)
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    navTools.querySelectorAll('a').forEach((a) => {
+      const icon = document.createElement('span');
+      icon.className = 'nav-tools-icon';
+      icon.innerHTML = SIGN_IN_ICON;
+      a.prepend(icon);
+    });
+  }
 
   // hamburger for mobile
   const hamburger = document.createElement('div');

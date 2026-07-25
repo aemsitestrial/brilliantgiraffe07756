@@ -4,7 +4,8 @@
    sections (4 megamenu items), tools (Sign In). */
 
 header .nav-wrapper {
-  background-color: #fff;
+  /* Grey utility band; the main-nav row paints white full-bleed over it. */
+  background-color: rgb(242 240 238);
   border-bottom: 1px solid #e5e5e5;
   font-family: var(--body-font-family, "Roboto", sans-serif);
 }
@@ -25,13 +26,14 @@ header nav[aria-expanded="true"] {
   overflow: visible;
 }
 
-/* ---- Brand row: logo + utility links ---- */
+/* ---- Utility row: logo (left) + quick links (right) ---- */
 header nav .nav-brand {
   grid-area: brand;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 32px;
-  padding: 12px 0;
+  padding: 10px 0;
 }
 
 header nav .nav-brand .nav-logo {
@@ -46,23 +48,33 @@ header nav .nav-brand .nav-logo img {
 header nav .nav-utility {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 24px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 header nav .nav-utility a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: #333;
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
 }
 
-/* ---- Tools: Sign In ---- */
+header nav .nav-utility-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--brand-red, #c8102e);
+}
+
+/* ---- Tools: Sign In as plain text + person icon ---- */
 header nav .nav-tools {
   grid-area: tools;
-  justify-self: end;
+  place-self: center end;
+  padding: 10px 0;
 }
 
 header nav .nav-tools ul {
@@ -72,19 +84,24 @@ header nav .nav-tools ul {
 }
 
 header nav .nav-tools a {
-  display: inline-block;
-  padding: 8px 20px;
-  border: 2px solid var(--link-color, #091c95);
-  border-radius: 4px;
-  color: var(--link-color, #091c95);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #333;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   text-decoration: none;
 }
 
+header nav .nav-tools-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--brand-red, #c8102e);
+}
+
 header nav .nav-tools a:hover {
-  background-color: var(--link-color, #091c95);
-  color: #fff;
+  color: var(--link-color, #091c95);
+  text-decoration: underline;
 }
 
 header nav .nav-utility a:hover {
@@ -92,14 +109,20 @@ header nav .nav-utility a:hover {
   text-decoration: underline;
 }
 
-/* ---- Main navigation (megamenu) ---- */
+/* ---- Main navigation (megamenu) — white row, centered items ---- */
 header nav .nav-sections {
   grid-area: sections;
+
+  /* paint white full-bleed over the grey utility band */
+  margin: 0 calc(50% - 50vw);
+  padding: 0 calc(50vw - 50%);
   border-top: 1px solid #e5e5e5;
+  background-color: #fff;
 }
 
 header nav .nav-sections .default-content-wrapper > ul {
   display: flex;
+  justify-content: center;
   gap: 8px;
   margin: 0;
   padding: 0;
