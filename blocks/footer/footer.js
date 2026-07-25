@@ -79,7 +79,19 @@ export default async function decorate(block) {
   }
 
   // ---- Section 3: brand + copyright ----
-  if (sections[2]) sections[2].classList.add('footer-brand');
+  if (sections[2]) {
+    sections[2].classList.add('footer-brand');
+  } else {
+    // Source footer ends with a copyright line; the content fragment omits it,
+    // so synthesize the brand/copyright row to match.
+    const brand = document.createElement('div');
+    brand.className = 'footer-brand';
+    const year = new Date().getFullYear();
+    const copyright = document.createElement('p');
+    copyright.textContent = `© ${year} Xcel Energy Inc. All rights reserved.`;
+    brand.append(copyright);
+    footer.append(brand);
+  }
 
   block.append(footer);
 }

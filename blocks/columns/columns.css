@@ -45,6 +45,12 @@
   font-weight: 700;
 }
 
+/* Body copy matches the source's large intro text (32px). */
+.columns p {
+  font-size: 32px;
+  line-height: 1.18;
+}
+
 /* CTA links inside columns are uppercase bold text-links (not filled buttons),
    matching the source "xeg-button" text style. Override EDS button decoration. */
 main .columns a.button:any-link,
@@ -73,11 +79,11 @@ main .columns a:any-link:hover {
   text-decoration: underline;
 }
 
-/* --- Contact Customer Service strip: last columns section, branded maroon.
-   Source renders white text on a dark branded background with a large light
-   button; we apply the brand-maroon treatment for readable contrast. --- */
+/* --- Contact Customer Service strip: last columns section, light grey.
+   Source renders dark text on a grey background (rgb(216 216 216)) with a
+   large branded button. --- */
 main > .section.columns-container:last-child {
-  background-color: var(--brand-maroon);
+  background-color: rgb(216 216 216);
   margin: 0;
   padding: 48px 0;
 }
@@ -85,18 +91,23 @@ main > .section.columns-container:last-child {
 main > .section.columns-container:last-child .columns h1,
 main > .section.columns-container:last-child .columns h2,
 main > .section.columns-container:last-child .columns p {
-  color: #fff;
+  color: #333;
 }
 
-/* The Contact CTA is a large light button, not a text-link. */
+main > .section.columns-container:last-child .columns p {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* The Contact CTA is a large branded button, not a text-link. */
 main > .section.columns-container:last-child .columns a.button:any-link,
 main > .section.columns-container:last-child .columns a:any-link {
   display: inline-block;
   margin: 8px 0 0;
   padding: 20px 64px;
-  border: 1px solid #fff;
-  background-color: #fff;
-  color: var(--brand-maroon);
+  border: 1px solid var(--brand-maroon);
+  background-color: var(--brand-maroon);
+  color: #fff;
   font-size: 20px;
   font-weight: 700;
   text-transform: none;
@@ -106,5 +117,5 @@ main > .section.columns-container:last-child .columns a:any-link {
 main > .section.columns-container:last-child .columns a.button:any-link:hover,
 main > .section.columns-container:last-child .columns a:any-link:hover {
   background-color: transparent;
-  color: #fff;
+  color: var(--brand-maroon);
 }
